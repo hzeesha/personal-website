@@ -1,4 +1,4 @@
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -13,9 +13,15 @@ body {
 }
 
 @keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ---- particles.js container ---- */
@@ -23,92 +29,148 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: transparent; /* let gradient show through */
+  background: transparent;
   z-index: 0;
 }
+
+/* ================= NAVBAR ================= */
 
 .nav-bar {
   position: fixed;
   inset: 0 0 auto 0;
   display: flex;
-  justify-content: flex-end;
-  padding-right: 1.5rem;
-  padding-top: 0.5rem;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 1.2rem;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
   z-index: 10;
 }
 
-.nav-text {
+.nav-logo img {
+  filter: drop-shadow(0 0 5px #000000);
+  width: 3rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.nav-logo img:hover {
+  transform: translateY(-3px) scale(1.03);
+  filter: drop-shadow(0 0 15px #000000) drop-shadow(0 0 10px #000000);
+}
+
+.nav-links {
   display: flex;
   justify-content: center;
   gap: 2rem;
   align-items: center;
   font-family: 'Outfit';
-  pointer-events: auto;
-  font-size: 0.7rem;
-  color: #cccccc; /* light grey text */
+  font-size: 0.75rem;
+  color: #cccccc;
+  filter: drop-shadow(0 0 5px #000000);
+}
+
+.nav-links a {
   text-decoration: none;
-  filter: drop-shadow(0 0 5px #000000);
+  color: #cccccc;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.hz-icon {
-  filter: drop-shadow(0 0 5px #000000);
-  margin-right: auto;
-  padding-left: 1.5rem;
-  width: 5rem;
-  transition: transform 0.3s ease, filter 0.3s ease;
+.nav-links a:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.hz-icon:hover {
-  transform: translateY(-4px) scale(1.0);
-  filter: drop-shadow(0 0 15px #000000) drop-shadow(0 0 10px #000000);
+/* hamburger icon (shown only on mobile) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
 }
 
-/* ---- wrapper for overlay text ---- */
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 4px 0;
+  background: #ffffff;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ================= LAYOUT / HERO ================= */
+
 .wrapper {
   position: relative;
-  z-index: 1; /* above the particles */
+  z-index: 1;
   width: 100%;
   text-align: center;
   top: 0;
-  pointer-events: none;
+  pointer-events: none; /* children opt-in */
 }
 
-/* ---- text styling ---- */
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding-top: 3.5rem; /* clear navbar on desktop */
+}
+
 .text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
 
 @keyframes slideInFromLeft {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @keyframes FadeIn {
-  0% { opacity:0; }
-  100% { opacity:1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .text h1 {
-  font-size: 7.0em;
+  font-size: 7em;
   margin: 0;
   font-family: 'Michroma';
-  /* Outfit */
   font-weight: bold;
-  color: #ffffff; /* white text */
+  color: #ffffff;
   pointer-events: auto;
   filter: drop-shadow(0 0 10px #000000);
   animation: 2s ease-out 0s 1 FadeIn;
 }
 
 .text p {
-  font-size: 2.0em;
-  color: #aaaaaa; /* light grey */
+  font-size: 2em;
+  color: #aaaaaa;
   font-family: 'Michroma';
   pointer-events: auto;
   filter: drop-shadow(0 0 10px #222222);
@@ -138,43 +200,32 @@ body {
   filter: drop-shadow(0 0 15px #ffffff) drop-shadow(0 0 10px #cccccc);
 }
 
-section {
-  height: 100vh; /* full screen per section */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  position: relative;
-  z-index: 1; /* above background */
-}
+/* ================= ABOUT ================= */
 
-.about-title{
-  font-size: 3.0em;
+.about-title {
+  font-size: 3em;
   margin: 0;
   font-family: 'Michroma';
-  color: #ffffff; /* white text */
+  color: #ffffff;
   pointer-events: auto;
   filter: drop-shadow(0 0 10px #000000);
   font-weight: bold;
   animation: 2s ease-out 0s 1 FadeIn;
 }
 
-.about-container{
-  display:flex;
+.about-container {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
 }
 
-.about-text{
+.about-text {
   background: radial-gradient(circle at top left, rgba(200, 200, 200, 0.2), rgba(40, 40, 40, 0.97));
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 1.6rem 1.8rem;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
-  padding: 10px;
   max-width: 500px;
   align-items: center;
   pointer-events: auto;
@@ -194,20 +245,21 @@ section {
 .profile-img {
   width: 200px;
   height: 200px;
-  border-radius: 50%; /* makes it circular */
+  border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  object-fit: cover; /* keeps proportions correct */
+  object-fit: cover;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-img:hover {
   transform: scale(1.03);
-  pointer-events: auto;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
-.experience-title{
+/* ================= EXPERIENCE ================= */
+
+.experience-title {
   font-size: 2em;
   font-family: 'Michroma';
   color: #fff;
@@ -218,7 +270,7 @@ section {
   padding-top: 2rem;
 }
 
-.experience-button{
+.experience-button {
   background: radial-gradient(circle at top left, rgba(200, 200, 200, 0.2), rgba(40, 40, 40, 0.97));
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -227,8 +279,8 @@ section {
   width: 18rem;
   height: 13.5rem;
   text-align: left;
-  padding-left: 1.0rem;
-  padding-right: 1.0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-family: 'Michroma';
   color: #c9c9c9;
   margin-bottom: 2rem;
@@ -237,89 +289,47 @@ section {
   cursor: pointer;
 }
 
-/**
-.experience-boxes{
-  width: 15rem;
-  height: 11rem;
-  background: rgba(116, 116, 116, 0.2);
-  backdrop-filter: blur(3px);
-  padding-top: 20px;
-  border-radius: 10px;
-  text-align: left;
-  padding-left: 1.0rem;
-  padding-right: 1.0rem;
-  font-family: 'Michroma';
-  color: #c9c9c9;
-  margin-bottom: 2rem;
-  pointer-events: auto;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-**/
-
-/**
-.experience-button{
-  width: 18rem;
-  height: 13.5rem;
-  background: rgba(116, 116, 116, 0.2);
-  backdrop-filter: blur(3px);
-  padding-top: 20px;
-  border-radius: 15px;
-  text-align: left;
-  padding-left: 1.0rem;
-  padding-right: 1.0rem;
-  font-family: 'Michroma';
-  color: #c9c9c9;
-  margin-bottom: 2rem;
-  pointer-events: auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-**/
-
-.experience-boxes:hover{
+.experience-button:hover {
   transform: scale(1.03);
-  pointer-events: auto;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
-.experience-button:hover{
-  transform: scale(1.03);
-  pointer-events: auto;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
-}
-
-.company-logos{
+.company-logos {
   border-radius: 10px;
   pointer-events: auto;
 }
 
-.company-logos-circle{
+.company-logos-circle {
   border-radius: 30px;
   pointer-events: auto;
 }
 
-.boxes{
+.boxes {
   display: flex;
-  justify-content: center; 
-  gap: 20px; 
+  justify-content: center;
+  gap: 20px;
 }
 
-.type-headers{
+.type-headers {
   font-family: 'Michroma';
   text-align: left;
-  pointer-events:auto
+  pointer-events: auto;
 }
+
+/* POPUPS */
 
 .overlay {
   display: none;
-  justify-content: center; 
-  align-items: center;    
-  min-height: 100vh;      
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-  z-index: 1000; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
   border-radius: 15px;
 }
 
@@ -333,29 +343,29 @@ section {
   position: relative;
 }
 
-.popup-title{
-  display:flex;
+.popup-title {
+  display: flex;
   gap: 10px;
   text-align: left;
   font-family: 'Michroma';
   font-size: 2rem;
-  margin:0;
+  margin: 0;
 }
 
-.popup-image{
+.popup-image {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.popup-image:hover{
+.popup-image:hover {
   transform: scale(1.1);
 }
 
-.popup-text{
+.popup-text {
   font-family: 'Outfit';
   font-size: 1rem;
 }
 
-.popup-role{
+.popup-role {
   text-align: left;
   font-family: 'Michroma';
   font-size: 0.75rem;
@@ -375,18 +385,20 @@ ul {
   text-align: left;
 }
 
-.close{
+.close {
   border-radius: 10px;
   background-color: #959595;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-.close:hover{
+.close:hover {
   transform: scale(1.1);
 }
 
-.projects-title{
+/* ================= PROJECTS ================= */
+
+.projects-title {
   font-size: 2em;
   font-family: 'Michroma';
   color: #fff;
@@ -395,52 +407,18 @@ ul {
   pointer-events: auto;
   animation: 2s ease-out 0s 1 FadeIn;
   padding-top: 2rem;
-  justify-content: flex-start; 
-
+  justify-content: flex-start;
 }
 
 #projects {
-  justify-content: flex-start; 
+  justify-content: flex-start;
   padding-top: 1.75rem;
 }
 
-.project-images{
+.project-images {
   border-radius: 10px;
-}
-
-.project-boxes {
-  width: 16rem;
-  min-height: 11rem;
-  background: radial-gradient(circle at top left, rgba(180, 180, 180, 0.18), rgba(50, 50, 50, 0.9));
-  backdrop-filter: blur(8px);
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1rem 1.2rem 1.1rem;
-  text-align: left;
-  font-family: 'Michroma';
-  color: #c9c9c9;
-  margin-bottom: 2rem;
-  pointer-events: auto;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
-  transition:
-    transform 0.22s ease,
-    box-shadow 0.22s ease,
-    border-color 0.22s ease;
-}
-
-/* Thin accent bar on the left */
-.project-boxes::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10%;
-  bottom: 10%;
-  width: 3px;
-  border-radius: 999px;
-  background: linear-gradient(to bottom, #ffffff, #c9c9c9);
-  opacity: 0.7;
+  width: 100%;
+  height: auto;
 }
 
 .project-button {
@@ -463,15 +441,11 @@ ul {
   flex-direction: column;
   gap: 0.45rem;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
-  transition:
-    transform 0.22s ease,
-    box-shadow 0.22s ease,
-    border-color 0.22s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
-/* Accent bar for buttons too */
 .project-button::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 10%;
@@ -482,8 +456,6 @@ ul {
   opacity: 0.8;
 }
 
-/* Shared hover state */
-.project-boxes:hover,
 .project-button:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
@@ -491,19 +463,21 @@ ul {
   background: radial-gradient(circle at top left, rgba(220, 220, 220, 0.23), rgba(30, 30, 30, 0.98));
 }
 
-.more-projects{
+.more-projects {
   font-family: 'Michroma';
   gap: 1rem;
   pointer-events: auto;
   font-size: 1rem;
 }
 
-#get-in-touch{
-  justify-content: flex-start; 
+/* ================= CONTACT ================= */
+
+#get-in-touch {
+  justify-content: flex-start;
   padding-top: 1.75rem;
 }
 
-.get-in-touch-title{
+.get-in-touch-title {
   font-size: 2em;
   font-family: 'Michroma';
   color: #fff;
@@ -514,18 +488,11 @@ ul {
   padding-top: 2rem;
 }
 
-/* ---- Get in touch / Contact ---- */
-
-#get-in-touch {
-  justify-content: flex-start;
-  padding-top: 1.75rem;
-}
-
 .contact-content {
   max-width: 400px;
   width: 100%;
   margin-top: 1.5rem;
-  pointer-events: auto; /* so the form is clickable */
+  pointer-events: auto;
   padding: 1.5rem;
 }
 
@@ -535,24 +502,6 @@ ul {
   color: #c9c9c9;
   margin-bottom: 1.5rem;
   text-align: center;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1.4fr;
-  gap: 1.75rem;
-}
-
-.contact-blurb {
-  font-family: 'Outfit';
-  font-size: 0.95rem;
-  color: #e0e0e0;
-  text-align: left;
-  background: radial-gradient(circle at top left, rgba(200, 200, 200, 0.18), rgba(30, 30, 30, 0.95));
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 1.5rem;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
 }
 
 .contact-form {
@@ -592,10 +541,8 @@ ul {
   color: #f5f5f5;
   outline: none;
   resize: vertical;
-  transition:
-    border-color 0.18s ease,
-    box-shadow 0.18s ease;
-  }
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
 
 .field-group input::placeholder,
 .field-group textarea::placeholder {
@@ -608,8 +555,6 @@ ul {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
   background: rgba(20, 20, 20, 0.95);
 }
-
-/* Button */
 
 .contact-btn {
   margin-top: 0.4rem;
@@ -625,11 +570,8 @@ ul {
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    border-color 0.18s ease;
-  }
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
 
 .contact-btn:hover {
   transform: translateY(-2px);
@@ -641,29 +583,6 @@ ul {
 .contact-btn:active {
   transform: translateY(0);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-}
-
-/* Responsive tweaks */
-
-@media (max-width: 768px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-content {
-    padding-inline: 1rem;
-  }
-
-  .contact-form,
-  .contact-blurb {
-    padding: 1.2rem;
-  }
-
-  .contact-btn {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
 }
 
 .form-status {
@@ -685,4 +604,155 @@ ul {
 
 .form-status.error {
   color: #ff8d8d;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .text h1 {
+    font-size: 4rem;
+  }
+
+  .text p {
+    font-size: 1.5rem;
+  }
+
+  section {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* layout */
+  section {
+    height: auto;
+    min-height: 100vh;
+    padding: 5rem 1.2rem 3rem;
+  }
+
+  .wrapper {
+    padding-inline: 0.5rem;
+  }
+
+  /* navbar mobile */
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 3.1rem;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0 1.2rem;
+    background: rgba(0, 0, 0, 0.96);
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* hero */
+  .text {
+    height: auto;
+    margin-top: 1rem;
+  }
+
+  .text h1 {
+    font-size: 3rem;
+  }
+
+  .text p {
+    font-size: 1.3rem;
+  }
+
+  .icons {
+    gap: 24px;
+  }
+
+  /* about */
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .profile-container {
+    margin-top: 1rem;
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about-text {
+    max-width: 100%;
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  /* experience & projects: stack cards */
+  .boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .experience-button,
+  .project-button {
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .type-headers {
+    width: 100%;
+    padding-left: 0.5rem;
+  }
+
+  .overlay .popup {
+    margin-inline: 1rem;
+    max-width: 100%;
+  }
+
+  /* contact section */
+  .contact-content {
+    padding-inline: 1rem;
+  }
+
+  .contact-form {
+    padding: 1.2rem;
+  }
+
+  .contact-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-bar {
+    padding-inline: 0.8rem;
+  }
+
+  .text h1 {
+    font-size: 2.5rem;
+  }
+
+  .text p {
+    font-size: 1.1rem;
+  }
+
+  .projects-title,
+  .experience-title,
+  .get-in-touch-title,
+  .about-title {
+    font-size: 1.7rem;
+  }
 }
