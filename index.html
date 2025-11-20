@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jersey+15&family=Michroma&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">  <title>Particles Test</title>
+  <link rel="icon" type="images/HZLogo.png" href="images/HZLogo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Particles background -->
+  <div id="particles-js"></div>
+
+  <div class = "nav-bar">
+    <a href="#home" class="hz-icon">
+      <img src="images/HZLogoWhite.png" alt="hassan logo" width="45" class="hz-icon">
+    </a>
+    <div class="nav-text">
+      <a href="#about" class="nav-text">
+        <h1>About</h1>
+      </a>
+      <a href="#experience" class="nav-text">
+        <h1>Experience</h1>
+      </a>
+      <a href="#projects" class="nav-text">
+        <h1>Projects</h1>
+      </a>
+      <a href="#get-in-touch" class="nav-text">
+        <h1>Get In Touch</h1>
+      </a>
+    </div>
+  </div>
+
+  <section id="home" class="wrapper">
+    <div class="text">
+      <h1>Hassan Zeeshan</h1>
+      <p>CS Student | Developer</p>
+      <div class="icons">
+        <a href="https://github.com/hzeesha" target="_blank">
+          <img src="images/github-logo.png" alt="GitHub logo" class="icon">
+        </a>
+        <a href="https://www.linkedin.com/in/hassan-zeeshan-b6857222b/" target="_blank">
+          <img src="images/linkedin.png" alt="LinkedIn logo" width="40" class="icon">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="wrapper">
+    <div class="about-title">
+      <p>Who is Hassan???<p>
+    </div>
+    <div class="about-container">
+      <div class="profile-container">
+        <img src="images/huz-wedding.png" alt="me" width="45" class="profile-img">
+      </div>
+      <div class="about-text">
+        <p>Do people even read these? Anyway, hey, I’m Hassan, a computer science student at Western University who’s been writing code since high school. I love solving problems, learning new tech, and building things that actually make an impact.</p>
+        <p>I’ve worked across startups, fintech, and AI research, doing everything from cleaning up backend systems to deploying APIs that serve thousands of users. I’m big on clean code, smart automation, and constantly pushing myself to grow as a developer.</p>
+        <p>When I’m not coding, you’ll catch me in the gym or on the soccer field. I love being active! </p>
+        <p>Hot take 🔥: The middle seat is the best seat</p>
+      </div>
+    </div>
+  </section>
+
+    <section id="experience" class="wrapper">
+      <div class="experience-title">
+        <h1>Experience</h1>
+      </div>
+      <h2 class="type-headers">Work Experience</h2>
+      <div class="boxes">
+        <button class="experience-button" onclick="openPopup('popup1')">
+          <a href="https://www.symcor.ca/" target="_blank">
+            <img src="images/symcorLogo.png" alt="Symcor Logo" width="55">
+          </a>
+          <h3>Symcor</h3>
+          <p>Software Developer Intern</p>
+          <p>Sept 2025 - Present</p>
+        </button>
+
+        <button class="experience-button" onclick="openPopup('popup2')">
+          <a href="https://ratemymanager.fyi/" target="_blank">
+            <img src="images/RMMlogo.jpeg" alt="RMM Logo" width="55" class="company-logos">
+          </a>
+          <h3>RateMyManager.fyi</h3>
+          <p>Software Engineer Intern</p>
+          <p>May 2025 - Aug 2025</p>
+        </button>
+
+        <button class="experience-button" onclick="openPopup('popup3')">
+          <a href="https://all-risks.com/" target="_blank">
+            <img src="images/All-Risks.png" alt="All-Risks Logo" width="55" class="company-logos">
+          </a>
+          <h3>All-Risks</h3>
+          <p>IT Technician</p>
+          <p>May 2024 - Aug 2024</p>
+        </button>
+      </div>
+      
+      <h2 class="type-headers">Leadership Experience</h2>
+      </div>
+      <div class="boxes">
+        <button class="experience-button" onclick="openPopup('popup4')">
+          <a href="https://westerndev-website-theta.vercel.app/" target="_blank">
+            <img src="images/WDS.jpeg" alt="WDS Logo" width="55" class="company-logos">
+          </a>
+          <h3>WDS</h3>
+          <p>Backend Developer</p>
+          <p>Oct 2024 - Apr 2025</p>
+        </button>
+
+        <button class="experience-button" onclick="openPopup('popup5')">
+          <a href="https://www.westernuai.ca/" target="_blank">
+            <img src="images/WAI.png" alt="Western AI Logo" width="55" class="company-logos">
+          </a>
+          <h3>Western AI</h3>
+          <p>Machine Learning Engineer</p>
+          <p>Sept 2024 - Mar 2025</p>
+        </button>
+
+        <button class="experience-button" onclick="openPopup('popup6')">
+          <a href="https://western-msa.com/" target="_blank">
+            <img src="images/WMSA.png" alt="Western MSA Logo" width="55" class="company-logos-link">
+          </a>
+          <h3>Western MSA</h3>
+          <p>Hackathon Manager</p>
+          <p>Sept 2024 - Feb 2025</p>
+        </button>
+      </div>
+    </section>
+
+  <div id="popup1" class="overlay">
+    <div class="popup">
+      <div class="popup-title">
+        <h3>Symcor</h3>
+        <div class="popup-image">
+          <a href="https://www.symcor.ca/" target="_blank">
+            <img src="images/symcorLogo.png" alt="Symcor Logo" width="55">
+          </a>
+        </div>
+      </div>
+      <div class="popup-role">
+        <p>Software Developer Intern<p>
+        <p>Sept 2025 - Present<p>
+      </div>
+      <div class="popup-text">
+        <ul>
+          <li>Collaborating in daily Agile standups and sprint cycles to deliver incremental improvements across enterprise-scale applications.</li> 
+          <li>Modernizing and upgrading legacy Java codebases to improve maintainability, security, and compatibility with newer environments.</li> 
+          <li>Supporting the development of CI/CD pipelines and DevOps automation, contributing to system reliability and streamlined deployments.</li>
+          <li>Engaging in AI research initiatives, exploring the integration of machine learning techniques into financial software solutions.</li>
+        </ul>
+      </div>
+      <button class="close" onclick="closePopup('popup1')">&times;</button>
+    </div>
+  </div>
+
+  <div id="popup2" class="overlay">
+    <div class="popup">
+      <div class="popup-title">
+        <h3>RateMyManager.fyi</h3>
+        <div class="popup-image">
+          <a href="https://ratemymanager.fyi/" target="_blank">
+            <img src="images/RMMlogo.jpeg" alt="RMM Logo" width="55" class="company-logos-circle">
+          </a>
+        </div>
+      </div>
+      <div class="popup-role">
+        <p>Software Engineer Intern<p>
+        <p>May 2025 - Aug 2025<p>
+      </div>
+      <div class="popup-text">
+        <ul>
+          <li>Built and deployed RESTful APIs in Python on AWS (Lambda, API Gateway, DynamoDB, S3, CloudFront), powering a platform serving 20,000+ active users.</li> 
+          <li>Authored design documents and implemented backend features from requirements, ensuring scalability and alignment with product roadmap.</li> 
+          <li>Designed and optimized DynamoDB schemas and Global Secondary Indexes (GSIs) to handle high-volume user/review queries, reducing API response times by 40%.</li>
+          <li>Developed automated test suites and conducted manual API testing, identifying edge cases and mitigating potential security risks.</li>
+          <li>Automated CI/CD pipelines with GitHub Actions, reducing deployment time by 80% and improving release reliability.</li>
+          <li>Proposed and implemented new product ideas that enhanced user experience and contributed to platform growth in a fast-paced startup environment.</li>
+        </ul>
+      </div>
+      <button class="close" onclick="closePopup('popup2')">&times;</button>
+    </div>
+  </div>
+
+  <div id="popup3" class="overlay">
+    <div class="popup">
+      <div class="popup-title">
+        <h3>All-Risks Insurance</h3>
+        <div class="popup-image">
+          <a href="https://all-risks.com/" target="_blank">
+            <img src="images/All-Risks.png" alt="All-Risks Logo" width="55" class="company-logos-circle">
+          </a>
+        </div>
+      </div>
+      <div class="popup-role">
+        <p>IT Technician<p>
+        <p>May 2024 - Aug 2024<p>
+      </div>
+      <div class="popup-text">
+        <ul>
+          <li>Implemented and maintained secure office network infrastructure, ensuring reliable device operation and IT compliance, while reducing downtime and boosting staff productivity by 20%.</li> 
+          <li>Deployed software solutions and proactively resolved technical issues to support staff productivity.</li> 
+        </ul>
+      </div>
+      <button class="close" onclick="closePopup('popup3')">&times;</button>
+    </div>
+  </div>
+
+  <div id="popup4" class="overlay">
+    <div class="popup">
+      <div class="popup-title">
+        <h3>Western Developers Society</h3>
+        <div class="popup-image">
+          <a href="https://westerndev-website-theta.vercel.app/" target="_blank">
+            <img src="images/WDS.jpeg" alt="WDS Logo" width="55" class="company-logos-circle">
+          </a>
+        </div>
+      </div>
+      <div class="popup-role">
+        <p>Backend Developer<p>
+        <p>May 2024 - Aug 2024<p>
+      </div>
+      <div class="popup-text">
+        <ul>
+          <li>Built and optimized a secure Supabase database schema to ensure data integrity, support efficient query performance, and scale reliably for an application projected to serve over 10,000 users.</li> 
+          <li>Developed hospital wait-time logic using Playwright and Mapbox to enhance UX and performance.</li> 
+        </ul>
+      </div>
+      <button class="close" onclick="closePopup('popup4')">&times;</button>
+    </div>
+  </div>
+
+  <div id="popup5" class="overlay">
+    <div class="popup">
+      <div class="popup-title">
+        <h3>Western AI</h3>
+        <div class="popup-image">
+          <a href="https://www.westernuai.ca/" target="_blank">
+            <img src="images/WAI.png" alt="Western AI Logo" width="55" class="company-logos-circle">
+          </a>
+        </div>
+      </div>
+      <div class="popup-role">
+        <p>Machine Learning Engineer<p>
+        <p>Sept 2024 - Mar 2025<p>
+      </div>
+      <div class="popup-text">
+        <ul>
+          <li>Built and trained machine learning models for real-time predictive analytics, achieving 88% accuracy while ensuring reliability and compliance with medical standards.</li> 
+          <li>Integrated predictive algorithms into a mobile app, improving performance and user experience.</li> 
+        </ul>
+      </div>
+      <button class="close" onclick="closePopup('popup5')">&times;</button>
+    </div>
+  </div>
+
+  <div id="popup6" class="overlay">
+    <div class="popup">
+      <div class="popup-title">
+        <h3>Western MSA</h3>
+        <div class="popup-image">
+          <a href="https://western-msa.com/" target="_blank">
+            <img src="images/WMSA.png" alt="Western MSA Logo" width="55" class="company-logos-link">
+          </a>
+        </div>
+      </div>
+      <div class="popup-role">
+        <p>Hackathon Manager<p>
+        <p>Sept 2024 - Feb 2025<p>
+      </div>
+      <div class="popup-text">
+        <ul>
+          <li>Led logistics and outreach for MSA’s first hackathon with 100+ participants and 15+ volunteers.</li> 
+          <li>Managed volunteer coordination, training, and real-time issue resolution during the event.</li> 
+        </ul>
+      </div>
+      <button class="close" onclick="closePopup('popup6')">&times;</button>
+    </div>
+  </div>
+
+  <script>
+    function openPopup(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
+
+  <section id="projects" class="wrapper">
+    
+    <div class="projects-title">
+      <h1>Projects</h1>
+    </div>
+    <div class="boxes">
+        <button class="project-button" onclick="window.open('https://github.com/hzeesha/syllabus-automation', '_blank')">
+          <img src="images/SyllabusCalendar.png" alt="Syllabus Example" width="250" height="150" class="project-images">
+          <h3>Syllabus Automator</h3>
+        </button>
+
+        <button class="project-button" onclick="window.open('https://github.com/hzeesha/NBAmatchPredictor', '_blank')">
+          <img src="images/MatchPredictor.png" alt="Match Predictor Example" width="250" height="150" class="project-images">
+          <h3>NBA Match Predictor</h3>
+        </button>
+
+        <button class="project-button" onclick="window.open('https://dorahacks.io/buidl/21659/', '_blank')">
+          <img src="images/AIvault.png" alt="AI Vault Example" width="250" height="150" class="project-images">
+          <h3>AI Vault</h3>
+        </button>
+      </div>
+      
+    </div>
+      <div class="boxes">
+        <button class="project-button" onclick="window.open('https://github.com/hzeesha/minesweeper', '_blank')">
+          <img src="images/Minesweeper.png" alt="Minesweeper Example" width="250" height="150" class="project-images">
+          <h3>Minesweeper</h3>
+        </button>
+
+        <button class="project-button" onclick="window.open('https://github.com/hzeesha/Bike-Paths-Game', '_blank')">
+          <img src="images/bikePaths.png" alt="Bike Paths Example" width="250" height="150" class="project-images">
+          <h3>Bike Paths Game</h3>
+        </button>
+
+        <button class="project-button" onclick="window.open('https://github.com/hzeesha/Petopia', '_blank')">
+          <img src="images/Petopia.png" alt="Petopia Example" width="250" height="150" class="project-images">
+          <h3>Petopia</h3>
+        </button>
+    </div>
+
+    <div class="more-projects">
+      <a href="https://github.com/hzeesha" target="_blank">
+        <img src="images/github-logo.png" alt="GitHub logo" class="icon">
+      </a>   
+    </div>
+  </section>
+
+  <section id="get-in-touch" class="wrapper">
+    <div class="get-in-touch-title">
+      <h1>Get in touch</h1>
+    </div>
+
+    <div class="contact-content">
+      <p class="contact-subtitle">
+        Have a project, opportunity, or just want to say hi? Drop a message below.
+      </p>
+        <form
+          id="contact-form"
+          class="contact-form"
+          action="https://formspree.io/f/xqandpon"
+          method="POST"
+        >
+          <div class="field-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" placeholder="Your name" required>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="field-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="What would you like to talk about?" required></textarea>
+          </div>
+
+          <input type="hidden" name="_subject" value="New message from hassanzeeshan.dev contact form">
+
+          <button type="submit" class="contact-btn">
+            Send Message
+          </button>
+        </form>
+
+        <div id="form-status" class="form-status"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  const form = document.getElementById('contact-form');
+  const statusDiv = document.getElementById('form-status');
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    statusDiv.textContent = "Sending...";
+    statusDiv.className = "form-status sending";
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        statusDiv.textContent = "Thanks! I'll get back to you soon.";
+        statusDiv.className = "form-status success";
+        form.reset();
+      } else {
+        statusDiv.textContent = "Something went wrong. Please try again later.";
+        statusDiv.className = "form-status error";
+      }
+    } catch (err) {
+      statusDiv.textContent = "Network error. Please try again.";
+      statusDiv.className = "form-status error";
+    }
+  }
+
+  if (form) {
+    form.addEventListener('submit', handleSubmit);
+  }
+  </script>
+
+
+  <!-- Scripts -->
+  <script src="particles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
