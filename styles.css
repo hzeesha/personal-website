@@ -218,6 +218,26 @@ section {
   padding-top: 2rem;
 }
 
+.experience-button{
+  background: radial-gradient(circle at top left, rgba(200, 200, 200, 0.2), rgba(40, 40, 40, 0.97));
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+  width: 18rem;
+  height: 13.5rem;
+  text-align: left;
+  padding-left: 1.0rem;
+  padding-right: 1.0rem;
+  font-family: 'Michroma';
+  color: #c9c9c9;
+  margin-bottom: 2rem;
+  pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/**
 .experience-boxes{
   width: 15rem;
   height: 11rem;
@@ -234,7 +254,9 @@ section {
   pointer-events: auto;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
+**/
 
+/**
 .experience-button{
   width: 18rem;
   height: 13.5rem;
@@ -252,6 +274,7 @@ section {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
+**/
 
 .experience-boxes:hover{
   transform: scale(1.03);
@@ -383,23 +406,6 @@ ul {
 
 .project-images{
   border-radius: 10px;
-}
-
-.experience-boxes{
-  width: 20rem;
-  height: 30rem;
-  background: rgba(116, 116, 116, 0.2);
-  backdrop-filter: blur(3px);
-  padding-top: 20px;
-  border-radius: 10px;
-  text-align: left;
-  padding-left: 1.0rem;
-  padding-right: 1.0rem;
-  font-family: 'Michroma';
-  color: #c9c9c9;
-  margin-bottom: 2rem;
-  pointer-events: auto;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .project-boxes {
