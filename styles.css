@@ -24,7 +24,7 @@ body {
   }
 }
 
-/* ---- particles.js container ---- */
+/* particles.js container */
 #particles-js {
   position: fixed;
   width: 100%;
@@ -33,7 +33,7 @@ body {
   z-index: 0;
 }
 
-/* ================= NAVBAR ================= */
+/* NAVBAR */
 
 .nav-bar {
   position: fixed;
@@ -41,7 +41,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 1.2rem;
+  padding: 0.5rem 1.2rem;
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(4px);
   z-index: 10;
@@ -64,7 +64,7 @@ body {
   gap: 2rem;
   align-items: center;
   font-family: 'Outfit';
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: #cccccc;
   filter: drop-shadow(0 0 5px #000000);
 }
@@ -108,7 +108,7 @@ body {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* ================= LAYOUT / HERO ================= */
+/* LAYOUT / HERO */
 
 .wrapper {
   position: relative;
@@ -116,8 +116,9 @@ body {
   width: 100%;
   text-align: center;
   top: 0;
-  pointer-events: none; /* children opt-in */
+  pointer-events: none;
 }
+
 
 section {
   height: 100vh;
@@ -129,7 +130,9 @@ section {
   text-align: center;
   position: relative;
   z-index: 1;
-  padding-top: 3.5rem; /* clear navbar on desktop */
+  padding-top: 3.5rem;
+  justify-content: flex-start;
+  padding-top: 1.75rem;
 }
 
 .text {
@@ -200,7 +203,7 @@ section {
   filter: drop-shadow(0 0 15px #ffffff) drop-shadow(0 0 10px #cccccc);
 }
 
-/* ================= ABOUT ================= */
+/* ABOUT SECTION */
 
 .about-title {
   font-size: 3em;
@@ -210,7 +213,13 @@ section {
   pointer-events: auto;
   filter: drop-shadow(0 0 10px #000000);
   font-weight: bold;
+  padding-top: 2rem;
   animation: 2s ease-out 0s 1 FadeIn;
+}
+
+#about{
+  justify-content: flex-start;
+  padding-top: 1.75rem;
 }
 
 .about-container {
@@ -257,7 +266,7 @@ section {
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
-/* ================= EXPERIENCE ================= */
+/* EXPERIENCE SECTION */
 
 .experience-title {
   font-size: 2em;
@@ -312,7 +321,7 @@ section {
 
 .type-headers {
   font-family: 'Michroma';
-  text-align: left;
+  text-align: center;
   pointer-events: auto;
 }
 
@@ -390,13 +399,14 @@ ul {
   background-color: #959595;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  padding: 6px 12px;
 }
 
 .close:hover {
   transform: scale(1.1);
 }
 
-/* ================= PROJECTS ================= */
+/* PROJECTS SECTION */
 
 .projects-title {
   font-size: 2em;
@@ -410,15 +420,10 @@ ul {
   justify-content: flex-start;
 }
 
-#projects {
-  justify-content: flex-start;
-  padding-top: 1.75rem;
-}
-
 .project-images {
   border-radius: 10px;
   width: 100%;
-  height: auto;
+  height: 150px;
 }
 
 .project-button {
@@ -470,12 +475,7 @@ ul {
   font-size: 1rem;
 }
 
-/* ================= CONTACT ================= */
-
-#get-in-touch {
-  justify-content: flex-start;
-  padding-top: 1.75rem;
-}
+/* CONTACT SECTION */
 
 .get-in-touch-title {
   font-size: 2em;
@@ -606,7 +606,7 @@ ul {
   color: #ff8d8d;
 }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVENESS */
 
 @media (max-width: 900px) {
   .text h1 {
