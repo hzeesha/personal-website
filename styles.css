@@ -108,7 +108,7 @@ body {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* LAYOUT / HERO */
+/* LAYOUT / SECTIONS */
 
 .wrapper {
   position: relative;
@@ -119,27 +119,38 @@ body {
   pointer-events: none;
 }
 
-
+/* base section setup */
 section {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   color: white;
   text-align: center;
   position: relative;
   z-index: 1;
-  padding-top: 3.5rem;
-  justify-content: flex-start;
-  padding-top: 1.75rem;
 }
 
+/* HERO: centered vertically */
+#home {
+  height: 100vh;
+  padding: 2.75rem 1.5rem 3rem; /* space for navbar */
+  justify-content: center;
+}
+
+/* ALL OTHER SECTIONS: consistent top offset */
+section:not(#home) {
+  height: auto;
+  padding: 2.75rem 1.5rem 3rem; /* same starting spot for all titles */
+  justify-content: flex-start;
+}
+
+/* text container inside hero */
 .text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  pointer-events: auto;
 }
 
 @keyframes slideInFromLeft {
@@ -166,7 +177,6 @@ section {
   font-family: 'Michroma';
   font-weight: bold;
   color: #ffffff;
-  pointer-events: auto;
   filter: drop-shadow(0 0 10px #000000);
   animation: 2s ease-out 0s 1 FadeIn;
 }
@@ -175,7 +185,6 @@ section {
   font-size: 2em;
   color: #aaaaaa;
   font-family: 'Michroma';
-  pointer-events: auto;
   filter: drop-shadow(0 0 10px #222222);
   animation: 2s ease-out 0s 1 FadeIn;
 }
@@ -203,23 +212,36 @@ section {
   filter: drop-shadow(0 0 15px #ffffff) drop-shadow(0 0 10px #cccccc);
 }
 
-/* ABOUT SECTION */
+/* SECTION TITLES – unified spacing */
 
-.about-title {
-  font-size: 3em;
-  margin: 0;
+.about-title,
+.experience-title,
+.projects-title,
+.get-in-touch-title {
+  margin: 0 0 2rem;
+  padding-top: 0;
   font-family: 'Michroma';
-  color: #ffffff;
-  pointer-events: auto;
-  filter: drop-shadow(0 0 10px #000000);
   font-weight: bold;
-  padding-top: 2rem;
+  color: #ffffff;
+  filter: drop-shadow(0 0 10px #000000);
+  pointer-events: auto;
   animation: 2s ease-out 0s 1 FadeIn;
 }
 
-#about{
-  justify-content: flex-start;
-  padding-top: 1.75rem;
+/* allow different sizes if you want */
+.about-title {
+  font-size: 3em;
+}
+.experience-title,
+.projects-title,
+.get-in-touch-title {
+  font-size: 2em;
+}
+
+/* ABOUT SECTION */
+
+#about {
+  /* inherits section:not(#home) spacing */
 }
 
 .about-container {
@@ -267,17 +289,6 @@ section {
 }
 
 /* EXPERIENCE SECTION */
-
-.experience-title {
-  font-size: 2em;
-  font-family: 'Michroma';
-  color: #fff;
-  font-weight: bold;
-  filter: drop-shadow(0 0 10px #000000);
-  pointer-events: auto;
-  animation: 2s ease-out 0s 1 FadeIn;
-  padding-top: 2rem;
-}
 
 .experience-button {
   background: radial-gradient(circle at top left, rgba(200, 200, 200, 0.2), rgba(40, 40, 40, 0.97));
@@ -340,13 +351,17 @@ section {
   background: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   border-radius: 15px;
+  overflow-y: auto;                 /* allow overall scroll */
+  -webkit-overflow-scrolling: touch;/* smooth on iOS */
 }
 
 .overlay .popup {
   background: #111;
-  padding: 2rem;
+  padding: 2.5rem 2rem 2rem;        /* extra top padding for close button */
   border-radius: 10px;
   max-width: 575px;
+  max-height: 90vh;                 /* never taller than viewport */
+  overflow-y: auto;                 /* internal scroll if content long */
   color: #fff;
   text-align: center;
   position: relative;
@@ -394,11 +409,16 @@ ul {
   text-align: left;
 }
 
+/* close button positioned at top-right of popup */
 .close {
-  border-radius: 10px;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border-radius: 999px;
   background-color: #959595;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  z-index: 1;
 }
 
 .close:hover {
@@ -406,18 +426,6 @@ ul {
 }
 
 /* PROJECTS SECTION */
-
-.projects-title {
-  font-size: 2em;
-  font-family: 'Michroma';
-  color: #fff;
-  font-weight: bold;
-  filter: drop-shadow(0 0 10px #000000);
-  pointer-events: auto;
-  animation: 2s ease-out 0s 1 FadeIn;
-  padding-top: 2rem;
-  justify-content: flex-start;
-}
 
 .project-images {
   border-radius: 10px;
@@ -475,17 +483,6 @@ ul {
 }
 
 /* CONTACT SECTION */
-
-.get-in-touch-title {
-  font-size: 2em;
-  font-family: 'Michroma';
-  color: #fff;
-  font-weight: bold;
-  filter: drop-shadow(0 0 10px #000000);
-  pointer-events: auto;
-  animation: 2s ease-out 0s 1 FadeIn;
-  padding-top: 2rem;
-}
 
 .contact-content {
   max-width: 400px;
@@ -622,11 +619,14 @@ ul {
 }
 
 @media (max-width: 768px) {
-  /* layout */
-  section {
-    height: auto;
-    min-height: 100vh;
-    padding: 5rem 1.2rem 3rem;
+  /* hero */
+  #home {
+    padding: 2.75rem 1.5rem 3rem;
+  }
+
+  /* all other sections still start from same spot */
+  section:not(#home) {
+    padding: 2.75rem 1.5rem 3rem;
   }
 
   .wrapper {
@@ -654,10 +654,9 @@ ul {
     display: flex;
   }
 
-  /* hero */
   .text {
     height: auto;
-    margin-top: 1rem;
+    margin-top: 0;
   }
 
   .text h1 {
@@ -672,7 +671,6 @@ ul {
     gap: 24px;
   }
 
-  /* about */
   .about-title {
     font-size: 2.2rem;
   }
@@ -698,7 +696,6 @@ ul {
     text-align: left;
   }
 
-  /* experience & projects: stack cards */
   .boxes {
     flex-direction: column;
     align-items: center;
@@ -720,7 +717,6 @@ ul {
     max-width: 100%;
   }
 
-  /* contact section */
   .contact-content {
     padding-inline: 1rem;
   }
@@ -748,10 +744,10 @@ ul {
     font-size: 1.1rem;
   }
 
-  .projects-title,
+  .about-title,
   .experience-title,
-  .get-in-touch-title,
-  .about-title {
+  .projects-title,
+  .get-in-touch-title {
     font-size: 1.7rem;
   }
 }
