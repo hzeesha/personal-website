@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-/* Prevent any horizontal scrolling */
+/* Stop horizontal scrolling */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -92,7 +92,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* hamburger icon (shown only on mobile) */
+/* hamburger icon (shown only on mobile or smaller screen sizes) */
 .nav-toggle {
   display: none;
   background: transparent;
@@ -131,7 +131,6 @@ body {
   pointer-events: none;
 }
 
-/* base section setup */
 section {
   display: flex;
   flex-direction: column;
@@ -142,21 +141,18 @@ section {
   z-index: 1;
 }
 
-/* HERO: centered vertically */
 #home {
   height: 100vh;
-  padding: 2.75rem 1.5rem 3rem; /* space for navbar */
+  padding: 2.75rem 1.5rem 3rem; 
   justify-content: center;
 }
 
-/* ALL OTHER SECTIONS: consistent top offset */
 section:not(#home) {
   height: auto;
-  padding: 2.75rem 1.5rem 3rem; /* same starting spot for all titles */
+  padding: 2.75rem 1.5rem 3rem; 
   justify-content: flex-start;
 }
 
-/* text container inside hero */
 .text {
   display: flex;
   flex-direction: column;
@@ -224,7 +220,7 @@ section:not(#home) {
   filter: drop-shadow(0 0 15px #ffffff) drop-shadow(0 0 10px #cccccc);
 }
 
-/* SECTION TITLES – unified spacing */
+/* SECTION TITLES */
 
 .about-title,
 .experience-title,
@@ -240,7 +236,6 @@ section:not(#home) {
   animation: 2s ease-out 0s 1 FadeIn;
 }
 
-/* allow different sizes if you want */
 .about-title {
   font-size: 3em;
 }
@@ -253,7 +248,7 @@ section:not(#home) {
 /* ABOUT SECTION */
 
 #about {
-  /* inherits section:not(#home) spacing */
+  
 }
 
 .about-container {
@@ -363,17 +358,17 @@ section:not(#home) {
   background: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   border-radius: 15px;
-  overflow-y: auto;                 /* allow overall scroll */
-  -webkit-overflow-scrolling: touch;/* smooth on iOS */
+  overflow-y: auto;                 
+  -webkit-overflow-scrolling: touch;
 }
 
 .overlay .popup {
   background: #111;
-  padding: 2.5rem 2rem 2rem;        /* extra top padding for close button */
+  padding: 2.5rem 2rem 2rem;        
   border-radius: 10px;
   max-width: 575px;
-  max-height: 90vh;                 /* never taller than viewport */
-  overflow-y: auto;                 /* internal scroll if content long */
+  max-height: 90vh;                 
+  overflow-y: auto;                 
   color: #fff;
   text-align: center;
   position: relative;
@@ -421,7 +416,6 @@ ul {
   text-align: left;
 }
 
-/* close button positioned at top-right of popup */
 .close {
   position: absolute;
   top: 0.75rem;
@@ -631,12 +625,10 @@ ul {
 }
 
 @media (max-width: 768px) {
-  /* hero */
   #home {
     padding: 2.75rem 1.5rem 3rem;
   }
 
-  /* all other sections still start from same spot */
   section:not(#home) {
     padding: 2.75rem 1.5rem 3rem;
   }
@@ -645,7 +637,6 @@ ul {
     padding-inline: 0.5rem;
   }
 
-  /* navbar mobile */
   .nav-toggle {
     display: block;
   }
