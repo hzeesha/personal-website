@@ -41,7 +41,9 @@ particlesJS("particles-js", {
 });
 
 function getParticlesInstance() {
-  return window.pJSDom && window.pJSDom.length ? window.pJSDom[0].pJS : null;
+  return window.pJSDom && window.pJSDom.length && window.pJSDom[0] && window.pJSDom[0].pJS
+    ? window.pJSDom[0].pJS
+    : null;
 }
 
 function setMousePos(pJS, x, y) {
@@ -57,11 +59,23 @@ function clearMouse(pJS) {
   pJS.interactivity.status = "mouseleave";
 }
 
+function triggerRepulse(pJS) {
+  const now = Date.now();
+  pJS.interactivity.mouse.click_pos_x = pJS.interactivity.mouse.pos_x;
+  pJS.interactivity.mouse.click_pos_y = pJS.interactivity.mouse.pos_y;
+  pJS.interactivity.mouse.click_time = now;
+  pJS.tmp.repulse_clicking = true;
+  pJS.tmp.repulse_count = 0;
+  pJS.tmp.repulse_finish = false;
+  setTimeout(() => {
+    const p2 = getParticlesInstance();
+    if (p2) p2.tmp.repulse_clicking = false;
+  }, (pJS.interactivity.modes.repulse.duration || 0.35) * 1000);
+}
+
 let rafPending = false;
 let latestX = null;
 let latestY = null;
-let lastRepulseAt = 0;
-const REPULSE_COOLDOWN_MS = 220;
 
 function scheduleMoveUpdate(x, y) {
   latestX = x;
@@ -76,93 +90,63 @@ function scheduleMoveUpdate(x, y) {
   });
 }
 
-function triggerRepulse(pJS) {
-  const now = Date.now();
-  if (now - lastRepulseAt < REPULSE_COOLDOWN_MS) return;
-  lastRepulseAt = now;
-
-  pJS.interactivity.mouse.click_pos_x = pJS.interactivity.mouse.pos_x;
-  pJS.interactivity.mouse.click_pos_y = pJS.interactivity.mouse.pos_y;
-  pJS.interactivity.mouse.click_time = now;
-
-  pJS.tmp.repulse_clicking = true;
-  pJS.tmp.repulse_count = 0;
-  pJS.tmp.repulse_finish = false;
-
-  setTimeout(() => {
-    const p2 = getParticlesInstance();
-    if (p2) p2.tmp.repulse_clicking = false;
-  }, (pJS.interactivity.modes.repulse.duration || 0.35) * 1000);
-}
-
-window.addEventListener(
-  "pointerdown",
-  (e) => {
+function attachHandlers() {
+  const onPointerDown = (e) => {
     const pJS = getParticlesInstance();
     if (!pJS) return;
     setMousePos(pJS, e.clientX, e.clientY);
     triggerRepulse(pJS);
-  },
-  { passive: true }
-);
+  };
 
-window.addEventListener(
-  "pointermove",
-  (e) => {
+  const onPointerMove = (e) => {
     scheduleMoveUpdate(e.clientX, e.clientY);
-  },
-  { passive: true }
-);
+  };
 
-window.addEventListener(
-  "pointerup",
-  () => {
+  const onPointerUp = () => {
     const pJS = getParticlesInstance();
     if (!pJS) return;
     clearMouse(pJS);
-  },
-  { passive: true }
-);
+  };
 
-window.addEventListener(
-  "touchstart",
-  (e) => {
+  const onTouchStart = (e) => {
     const pJS = getParticlesInstance();
     if (!pJS || !e.touches || !e.touches.length) return;
     const t = e.touches[0];
     setMousePos(pJS, t.clientX, t.clientY);
     triggerRepulse(pJS);
-  },
-  { passive: true }
-);
+  };
 
-window.addEventListener(
-  "touchmove",
-  (e) => {
+  const onTouchMove = (e) => {
     if (!e.touches || !e.touches.length) return;
     const t = e.touches[0];
     scheduleMoveUpdate(t.clientX, t.clientY);
-  },
-  { passive: true }
-);
+  };
 
-window.addEventListener(
-  "touchend",
-  () => {
+  const onTouchEnd = () => {
     const pJS = getParticlesInstance();
     if (!pJS) return;
     clearMouse(pJS);
-  },
-  { passive: true }
-);
+  };
 
-window.addEventListener(
-  "click",
-  (e) => {
-    const pJS = getParticlesInstance();
-    if (!pJS) return;
-    setMousePos(pJS, e.clientX, e.clientY);
-    triggerRepulse(pJS);
-  },
-  { passive: true }
-);
+  window.removeEventListener("pointerdown", onPointerDown);
+  window.removeEventListener("pointermove", onPointerMove);
+  window.removeEventListener("pointerup", onPointerUp);
+  window.removeEventListener("touchstart", onTouchStart);
+  window.removeEventListener("touchmove", onTouchMove);
+  window.removeEventListener("touchend", onTouchEnd);
+
+  window.addEventListener("pointerdown", onPointerDown, { passive: true });
+  window.addEventListener("pointermove", onPointerMove, { passive: true });
+  window.addEventListener("pointerup", onPointerUp, { passive: true });
+  window.addEventListener("touchstart", onTouchStart, { passive: true });
+  window.addEventListener("touchmove", onTouchMove, { passive: true });
+  window.addEventListener("touchend", onTouchEnd, { passive: true });
+}
+
+window.addEventListener("load", () => {
+  setTimeout(attachHandlers, 0);
+});
+
+window.addEventListener("pageshow", () => {
+  setTimeout(attachHandlers, 0);
+});
