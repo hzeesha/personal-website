@@ -11,7 +11,7 @@ particlesJS("particles-js", {
     opacity: {
       value: 1,
       random: true,
-      anim: { enable: true, speed: 1, opacity_min: 0, sync: false }
+      anim: { enable: false }
     },
     size: {
       value: 3,
@@ -37,7 +37,7 @@ particlesJS("particles-js", {
     }
   },
   interactivity: {
-    detect_on: "canvas",
+    detect_on: "window",
     events: {
       onhover: { enable: true, mode: "bubble" },
       onclick: { enable: true, mode: "repulse" },

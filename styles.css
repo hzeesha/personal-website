@@ -45,6 +45,11 @@ body {
   z-index: 0;
 }
 
+#particles-js,
+#particles-js canvas {
+  pointer-events: none;
+}
+
 /* NAVBAR */
 
 .nav-bar {
